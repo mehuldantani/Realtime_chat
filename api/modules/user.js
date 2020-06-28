@@ -7,4 +7,4 @@ const userschema = mongoose.Schema({
  name: {type: String, required : true}
 })
 
-module.exports = mongoose.model('User_master', userschema); 
+module.exports = mongoose.model('User_master', userschema);
