@@ -1,0 +1,3 @@
+signup API created .
+API is working. as user are getting added into the database.
+API response is null as it says res.status is not a function. need to check on that.

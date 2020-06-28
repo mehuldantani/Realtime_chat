@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+*
+{
+	box-sizing: border-box;
+}
+body
+{
+	font-family: 'Montserrat', sans-serif;
+	background: #f6f5f7;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: -20px 0 50px;
+}
+h1
+{
+	font-weight: bold;
+	margin:0;
+}
+
+p{
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+span{
+	font-size: 12px;
+}
+a{
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+.forgot:hover {
+	color: #557a95;
+}
+#back {
+	position: relative;
+	left: -120px;
+	background-color: #fff;
+	color: black;
+	border: #fff;
+}
+.container
+{
+	background: #fff;
+	border-radius: 10px;
+	box-shadow:  0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 420px;
+	min-width: 50%;
+
+}
+
+.form-container
+{
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	justify-content: center;
+	align-items:center;
+	text-align: center;
+}
+.social-container
+{
+	margin: 20px 0;
+}
+.social-container a{
+	border: 1px solid #ddd;
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content:center;
+	align-items: center;
+	margin: 0 5px;
+	height: 40px;
+	width: 40px;
+}
+.form-container input{
+	background:  #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+	font-family: Montserrat;
+}
+.form-container button
+{
+	margin-top: 10px;
+}
+
+button
+{
+	border-radius: 20px;
+	border: 1px solid #557a95;
+	background: #557a95;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	padding:12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+
+}
+button:active{
+	transform: scale(0.95);
+}
+button:focus
+{
+	outline: none;
+}
+button.over-btn
+{
+	background: transparent;
+	border-color: #fff;
+}
+.social:hover
+{
+	color: #0e76a8;
+	border-color: #0e76a8;
+}
+.form-container
+{
+	position: absolute;
+	top: 0;
+	height:  100%;
+	transition:  0.6s ease-in-out;
+}
+
+.signin-container
+{
+	left:0;
+	width: 50%;
+	z-index:2;
+}
+
+.signup-container
+{
+	left:0;
+	width: 50%;
+	z-index:1;
+	opacity: 0;
+}
+.signup-container button
+{
+	background: #557a95;
+	border-color: #557a95;
+}
+.signup-container .social:hover
+{
+	color: #557a95;
+	border-color: #557a95;
+}
+.signin-container .social:hover
+{
+	color: #557a95;
+	border-color: #557a95;
+}
+.signin-container button
+{
+	background: #557a95;
+	border-color: #557a95;
+}
+.signin-container .forgot
+{
+
+    
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+.overlay-container
+{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+.overlay
+{
+	background: #557a95;
+	color: #fff;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.forgot-pw{
+	position: relative;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(-20%);
+	opacity: 0;
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+	padding: 0 50px;
+	justify-content: center;
+	align-items:center;
+	text-align: center;
+	
+}
+
+.overlay-panel
+{
+	position: absolute;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0 40px;
+	height: 100%;
+	width: 50%;
+	text-align: center;
+	transform: translateX(0);
+	transition:  transform 0.6s ease-in-out;
+}
+
+.overlay-right
+{
+	right: 0;
+	transform: translateX(0);
+}
+.overlay-left
+{
+	transform: translateX(-20%);
+}
+.container.right-panel-active .signin-container
+{
+	transform: translateX(100%);
+}
+.container.right-panel-active .overlay-container
+{
+	transform: translateX(-100%);
+}
+.container.right-panel-active .signup-container
+{
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+}
+.container.right-panel-active .overlay
+{
+	transform: translateX(50%);
+}
+
+.container.right-panel-active .overlay-left
+{
+	transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right
+{
+	transform: translateX(20%);
+}
+
+.container.forgot-panel-active .signin-container
+{
+	transform: translateX(100%);
+	opacity: 0;
+}
+
+.container.forgot-panel-active .forgot-pw{
+	transform: translateX(0);
+	opacity: 1;
+	z-index: 3;
+}
+
+
