@@ -14,6 +14,8 @@ mongoose.connection
         console.log(error);
     })
 
+    //directing request with "/user" API request to userrouter
 app.use("/user",userrouter);
 
+//exporting the app
 module.exports = app;

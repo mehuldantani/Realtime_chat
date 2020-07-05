@@ -29,6 +29,7 @@ chatField.addEventListener('submit', (e) => {
 	e.target.elements.msg.focus();
 })
 
+//function that creates msg body class for other users
 function outputMessage(message) {
 	const div = document.createElement('div');
 	div.classList.add('message');
@@ -37,6 +38,7 @@ function outputMessage(message) {
 	document.querySelector('.chat-messages').appendChild(div);
 };
 
+//function that creates msg body class for logged in user
 function yourMessage(message) {
 	const div = document.createElement('div');
 	div.classList.add('message');

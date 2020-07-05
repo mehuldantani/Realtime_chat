@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//creating user scehma for Users in mongodb
 const userschema = mongoose.Schema({
  _id :mongoose.Types.ObjectId,
  email:{ type: String,
@@ -10,4 +11,5 @@ const userschema = mongoose.Schema({
  name: {type: String, required : true}
 })
 
+//exporting the schema
 module.exports = mongoose.model('User_master', userschema);

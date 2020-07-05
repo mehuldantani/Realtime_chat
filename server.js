@@ -6,12 +6,16 @@ const mongoose = require("mongoose");
 const bodyparser = require('body-parser');
 const messageStructure = require('./others/messages');
 const app = require('./app')
-//for creating the server
+
+//setting body parser for URls in API
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
+
+//for creating the server
 const server = http.createServer(app);
 const io = socketio(server);
 
+//bot name for messages from ADMIN.
 const bot = 'Admin';
 
 //bring our static files to this server
@@ -44,5 +48,6 @@ io.on('connection', socket => {
 //asking server to listen on the said port
 const port = process.env.port || 5500;
 
+//listen to running port for communication.
 server.listen(port, () =>
     console.log(`Server is running on ${port}`));

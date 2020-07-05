@@ -1,5 +1,6 @@
 const moment = require('moment');
 
+//creating two functions that returns time for the text send
 function messageStructure(username, text) {
     return {
     username,
