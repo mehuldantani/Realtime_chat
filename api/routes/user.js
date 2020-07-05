@@ -110,5 +110,5 @@ router.post("/signup", jsonParser, (req, res, next) => {
      })
  })
  
-//exporting the router 
+//exporting the router
 module.exports = router;
