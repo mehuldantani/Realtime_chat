@@ -22,10 +22,10 @@
 					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 				</div>
 				<span>or use your email to join us</span>
-				<input type="text" placeholder="Name" required/>
-				<input type="email" placeholder="Email" required/>
-				<input type="password" placeholder="Password" required/>
-				<button style="cursor: pointer" id="user_sign_up">Sign Up</button>
+				<input type="text" placeholder="Name" id="signup_name" required/>
+				<input type="email" placeholder="Email" id="signup_email_id" required/>
+				<input type="password" placeholder="Password" id="signup_pword" required/>
+				<button type="button" style="cursor: pointer" id="user_sign_up">Sign Up</button>
 			</form>
 		</div>
 		<div class="form-container signin-container">
@@ -39,8 +39,9 @@
 				<span>or use your account</span>
 				<input type="email" placeholder="Email" id="login_id" required />
 				<input type="password" placeholder="Password" id="login_pw" required/>
+				<span id="invalid_cred">Invalid Credentials</span>
 				<a href="#" class="forgot" id="forgot-pw">Forgot your Password ?</a>
-				<button style="cursor: pointer" id="user_sign_in">Sign In</button>
+				<button type="button" style="cursor: pointer" id="user_sign_in">Sign In</button>
 			</form>
 		</div>
 		<div class="form-container forgot-pw">
