@@ -1,7 +1,7 @@
 const chatField = document.getElementById('chat-message-field');
 const scrollset = document.querySelector('.chat-messages');
 const socket = io();
-
+const logged_user = window.localStorage.getItem('email');
 //send message to chat screen
 socket.on('message', message => {
 	outputMessage(message);
@@ -43,7 +43,6 @@ function yourMessage(message) {
 	const div = document.createElement('div');
 	div.classList.add('message');
 	div.classList.add('send');
-	div.innerHTML = `<p class="meta">Mehul<span>10.20</span></p>
-	<p class="text">${message}</p>`
+	div.innerHTML = `<p class="text">${message}</p>`
 	document.querySelector('.chat-messages').appendChild(div);
 };

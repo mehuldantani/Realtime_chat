@@ -49,6 +49,9 @@ fetch('http://localhost:5500/user/login', {
     //if API response is successful then redirect to chat page
     if(data.message === "Auth Successful")
     window.location.href ="http://localhost:5500/chat.html"
+    window.localStorage.setItem('login_token',data.token);
+    window.localStorage.setItem('user',data.email);
+
   }
     )
   .catch(err => {

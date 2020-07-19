@@ -94,7 +94,8 @@ router.post("/signup", jsonParser, (req, res, next) => {
                  //return Auth Success if email and pw matches in the database.
                  return res.status(200).json({
                      message:"Auth Successful",
-                     token: token
+                     token: token,
+                     email: req.body.email
                  })
              }
              return res.status(401).json({
