@@ -2,10 +2,10 @@ const path = require('path');
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
-const mongoose = require("mongoose");
 const bodyparser = require('body-parser');
 const messageStructure = require('./others/messages');
-const app = require('./app')
+const {adduser, getcurrentuser} = require('./others/user');
+const app = require('./app');
 
 //setting body parser for URls in API
 app.use(bodyparser.urlencoded({extended:false}));
@@ -17,33 +17,34 @@ const io = socketio(server);
 
 //bot name for messages from ADMIN.
 const bot = 'Admin';
-var loggedin_user;
+
 //bring our static files to this server
 app.use(express.static(path.join(__dirname, 'html_css')));
 
 //to be executed when users connects
 
 io.on('connection', socket => {
-
     socket.on('room_join', logged_user => {
-        loggedin_user = logged_user;
-    })
+    adduser(socket.id, logged_user);
+    });
 
     //notifies that user is connected
     socket.emit('message', messageStructure(bot, 'you are connected.'));
 
     //notifies others that new users is connected now
-    socket.broadcast.emit('message', messageStructure(bot, 'New user is connected now.'));
+    socket.broadcast.emit('message', messageStructure(bot, `User is connected now.`)
+    );
 
     //when user got disconnected
     socket.on('disconnect', () => {
-        io.emit('message', messageStructure(bot, 'user disconnected.'));
+    const user = getcurrentuser(socket.id);
+        io.emit('message', messageStructure(bot, `${user.username} is disconnected`));
     });
-
 
     //listen to incoming messages
     socket.on('chat-msg', msg => {
-        socket.broadcast.emit('message', messageStructure(loggedin_user, msg));
+    const user = getcurrentuser(socket.id);
+        socket.broadcast.emit('message', messageStructure(user.username, msg));
     })
 
 });
