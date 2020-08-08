@@ -17,7 +17,7 @@ const io = socketio(server);
 
 //bot name for messages from ADMIN.
 const bot = 'Admin';
-
+var loggedin_user;
 //bring our static files to this server
 app.use(express.static(path.join(__dirname, 'html_css')));
 
@@ -25,11 +25,14 @@ app.use(express.static(path.join(__dirname, 'html_css')));
 
 io.on('connection', socket => {
 
+    socket.on('room_join', logged_user => {
+        loggedin_user = logged_user;
+    })
+
     //notifies that user is connected
     socket.emit('message', messageStructure(bot, 'you are connected.'));
 
     //notifies others that new users is connected now
-    debugger;
     socket.broadcast.emit('message', messageStructure(bot, 'New user is connected now.'));
 
     //when user got disconnected
@@ -40,7 +43,7 @@ io.on('connection', socket => {
 
     //listen to incoming messages
     socket.on('chat-msg', msg => {
-        socket.broadcast.emit('message', messageStructure('USER', msg));
+        socket.broadcast.emit('message', messageStructure(loggedin_user, msg));
     })
 
 });

@@ -44,7 +44,8 @@ router.post("/signup", jsonParser, (req, res, next) => {
                     .then(result => {
                         console.log(result);
                         res.status(201).json({
-                          message: "User created"  //publishing if user added successfully
+                          message: "User created",  //publishing if user added successfully
+                          name: req.body.name
                         });
                       })
                     .catch(err =>{
@@ -95,7 +96,7 @@ router.post("/signup", jsonParser, (req, res, next) => {
                  return res.status(200).json({
                      message:"Auth Successful",
                      token: token,
-                     email: req.body.email
+                     name: User[0].name
                  })
              }
              return res.status(401).json({

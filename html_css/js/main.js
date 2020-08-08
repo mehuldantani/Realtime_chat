@@ -22,7 +22,7 @@ chatField.addEventListener('submit', (e) => {
 	socket.emit('chat-msg', msg);
 	yourMessage(msg);
 
-	//scrollset.scrollTop = scrollset.scrollHeight;
+	scrollset.scrollTop = scrollset.scrollHeight;
 
 	//clear text feild after sendig a message
 	e.target.elements.msg.value = '';
@@ -40,7 +40,7 @@ function outputMessage(message) {
 
 //function that creates msg body class for logged in user
 function yourMessage(message) {
-	const div = document.createElement('div');
+	const div = document.createElement('div'); 
 	div.classList.add('message');
 	div.classList.add('send');
 	div.innerHTML = `<p class="text">${message}</p>`

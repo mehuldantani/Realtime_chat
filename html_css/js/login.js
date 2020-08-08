@@ -1,3 +1,5 @@
+const socket = io();
+
 const signUpbtn = document.getElementById('signup');
 const signInbtn = document.getElementById('signin');
 const container = document.getElementById('container');
@@ -47,11 +49,14 @@ fetch('http://localhost:5500/user/login', {
   .then(response => response.json())
   .then(data => {
     //if API response is successful then redirect to chat page
-    if(data.message === "Auth Successful")
-    window.location.href ="http://localhost:5500/chat.html"
+    if(data.message === "Auth Successful"){
     window.localStorage.setItem('login_token',data.token);
     window.localStorage.setItem('user',data.email);
+    logged_user = data.name;
+    socket.emit('room_join',logged_user);
+    window.location.href ="http://localhost:5500/chat.html"
 
+    }
   }
     )
   .catch(err => {
@@ -83,9 +88,12 @@ user_sign_up.addEventListener('click', ()=>{
     .then(response => response.json())
     .then(data => {
       //if API response is successful then redirect to chat page
-      if(data.message === "User created")
+      if(data.message === "User created"){
+      logged_user = data.name;
+      socket.emit('room_join',logged_user);
       window.location.href ="http://localhost:5500/chat.html"
     }
+  }
       )
     .catch(err => {
       console.log(err)
